@@ -1,0 +1,4 @@
+x = 8 
+y = 8 
+z = x - y 
+print ("Printing the sub of x - y:",z)
