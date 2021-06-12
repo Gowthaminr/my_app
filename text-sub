@@ -1,8 +1,0 @@
-x = 8 
-y = 8 
-z = x - y 
-print ("Printing the sub of x - y:",z)
-a = input("Enter your first number for addition")
-b = input("Enter your second number for addition")
-c = a + b
-print(c)
