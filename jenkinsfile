@@ -1,37 +1,28 @@
 pipeline {
     agent any
-    tools { 
-        maven 'Maven' 
-        jdk 'jdk 1.8' 
-    }
     stages {
-        stage ('Building stage') {
+        stage ('Compile Stage') {
+
             steps {
-                echo "Building"
-                  }  
-                               }
-         stage ('Testing stage') {
-            steps {
-                echo "Testing" 
-                  }   
-                                }
-          stage ('Staging') {
-            steps {
-                echo "staging" 
-                  }   
-                            }
-           stage ('Fetch from Github') {
-            steps {
-                git credentialsId: 'Gowthami', url: 'https://github.com/Gowthaminr/my_app' 
-                  }
-              }
-           stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
-            }      }
-           } 
-            
+                withMaven(maven : 'apache-maven-3.6.1') {
+                    bat 'mvn clean compile'
+                }
+            }
         }
+        stage ('Testing Stage') {
+
+            steps {
+                withMaven(maven : 'apache-maven-3.6.1') {
+                    bat 'mvn test'
+                }
+            }
+        }
+        stage ('Install Stage') {
+            steps {
+                withMaven(maven : 'apache-maven-3.6.1') {
+                    bat 'mvn install'
+                }
+            }
+        }
+    }
+}
