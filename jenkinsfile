@@ -16,7 +16,11 @@ pipeline {
                 echo "staging" 
                   }   
                             }
-              
+           stage ('Fetch from Github') {
+            steps {
+                git credentialsId: 'Gowthami', url: 'https://github.com/Gowthaminr/my_app' 
+                  }
+              }
            } 
             
         }
