@@ -5,13 +5,6 @@ pipeline {
         jdk 'jdk 1.8' 
     }
     stages {
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
-            }      }
         stage ('Building stage') {
             steps {
                 echo "Building"
@@ -32,6 +25,13 @@ pipeline {
                 git credentialsId: 'Gowthami', url: 'https://github.com/Gowthaminr/my_app' 
                   }
               }
+           stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
+            }      }
            } 
             
         }
