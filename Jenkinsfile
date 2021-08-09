@@ -1,6 +1,6 @@
 pipeline { 
     environment { 
-        registry = "https://hub.docker.com/repository/docker/gowthaminr/docker-pipeline" 
+        registry = "gowthaminr/docker-pipeline" 
         registryCredential = 'gowthaminr'
         dockerImage = '' 
                }
